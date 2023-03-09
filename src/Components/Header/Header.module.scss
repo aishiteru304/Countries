@@ -4,14 +4,15 @@
     align-items : center;
     justify-content : space-between;
     padding : 0 40px;
-    box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+    box-shadow : var(--box-shadow);
     z-index : 10;
 }
+
 
 .header span{
     font-size : 2.4rem;
     font-weight : bold;
-    text-shadow : 2px 3px 3px rgba(0, 0, 0, 0.3);
+    text-shadow : var(--text-shadow);
 }
 
 .toggleButton{

@@ -1,21 +1,22 @@
 import {RiMoonFill} from 'react-icons/ri'
 import {BsFillSunFill} from 'react-icons/bs'
-import { useRef, useState,useEffect } from 'react'
+import { useRef, useState,useEffect, useContext } from 'react'
 import styles from './Header.module.scss'
+import {ThemeContext} from '../ThemeContext/themeContext.js'
 
 function Header(){
+    const themeContext = useContext(ThemeContext)
     const refInput = useRef()
     const refCircle = useRef()
     const refToggle = useRef()
     const [isDark,setIsDark] = useState(false)
 
-    // useEffect(()=>{
-    //     refInput.current.checked = isDark
-    // },[isDark]) 
+
 
     const handleToggle = () =>{
         refInput.current.checked = !refInput.current.checked
         setIsDark(refInput.current.checked)
+        themeContext.toggleTheme()
     }
     
     useEffect(()=>{
@@ -36,7 +37,7 @@ function Header(){
 
     
     return (
-        <div className = {styles.header}>
+        <div className = {`${styles.header} ${themeContext.theme}`}>
              <span>Where is the world?</span> 
         <div className = {styles.toggleButton} ref={refToggle} onClick={handleToggle}>
             <input type='checkbox' className = {styles.input} ref={refInput}></input>
