@@ -1,50 +1,73 @@
-import {FaChevronDown, FaGlobeAfrica, FaGlobeAmericas, FaGlobeAsia, FaGlobeEurope} from 'react-icons/fa'
-import {GiWorld, GiEarthAsiaOceania} from 'react-icons/gi'
+import { FaChevronDown, FaGlobeAfrica, FaGlobeAmericas, FaGlobeAsia, FaGlobeEurope } from 'react-icons/fa'
+import { GiWorld, GiEarthAsiaOceania } from 'react-icons/gi'
 import styled from 'styled-components'
-import { useContext, useRef } from 'react'
+import { useContext, useRef, useState, useEffect } from 'react'
 import { ThemeContext } from '../../ThemeContext/themeContext'
 
-function Filter(){
+function Filter() {
     const themeContext = useContext(ThemeContext)
-    return(
+    const refSelect = useRef(null)
+    const [isSelect, setIsSelect] = useState(false);
+
+    const handleSelect = () => {
+        setIsSelect(!isSelect)
+    }
+    useEffect(() => {
+        function handleClickOutside(e) {
+            if (refSelect.current && !refSelect.current.contains(e.target)) {
+                setIsSelect(false);
+            }
+        }
+
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, [refSelect]);
+
+    const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
+
+    const [region, setRegion] = useState('All')
+
+    return (
         <FilterPane>
             <h3>Filter by regions:</h3>
             <SelectPane>
-                <Select className={themeContext.theme}>
-                    <span>All</span>
-                    <FaChevronDown/>
+                <Select className={themeContext.theme} onClick={handleSelect} ref={refSelect}>
+                    <span>{region}</span>
+                    <FaChevronDown />
                 </Select>
 
-                <SelectOption className={themeContext.theme}>
+                <SelectOption className={`${themeContext.theme} ${(isSelect ? '' : 'displayNone')} `}>
 
-                    <SelectItem>
-                        <GiWorld/>
-                        <span>All</span>
+                    <SelectItem onClick={() => setRegion(regions[0])} >
+                        <GiWorld />
+                        <span>{regions[0]}</span>
                     </SelectItem>
 
-                    <SelectItem>
-                        <FaGlobeAfrica/>
-                        <span>Africa</span>
+                    <SelectItem onClick={() => setRegion(regions[1])} >
+                        <FaGlobeAfrica />
+                        <span>{regions[1]}</span>
                     </SelectItem>
 
-                    <SelectItem>
-                        <FaGlobeAmericas/>
-                        <span>Americas</span>
+                    <SelectItem onClick={() => setRegion(regions[2])} >
+                        <FaGlobeAmericas />
+                        <span>{regions[2]}</span>
                     </SelectItem>
 
-                    <SelectItem>
-                        <FaGlobeAsia/>
-                        <span>Asia</span>
+                    <SelectItem onClick={() => setRegion(regions[3])} >
+                        <FaGlobeAsia />
+                        <span>{regions[3]}</span>
                     </SelectItem>
 
-                    <SelectItem>
-                        <FaGlobeEurope/>
-                        <span>Europe</span>
+                    <SelectItem onClick={() => setRegion(regions[4])} >
+                        <FaGlobeEurope />
+                        <span>{regions[4]}</span>
                     </SelectItem>
 
-                    <SelectItem>
-                        <GiEarthAsiaOceania/>
-                        <span>Oceania</span>
+                    <SelectItem onClick={() => setRegion(regions[5])} >
+                        <GiEarthAsiaOceania />
+                        <span>{regions[5]}</span>
                     </SelectItem>
 
 

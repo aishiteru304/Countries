@@ -1,21 +1,24 @@
-.header{
-    height : 8vh;
-    display : flex;
-    align-items : center;
-    justify-content : space-between;
-    padding : 0 40px;
-    box-shadow : var(--box-shadow);
-    z-index : 10;
+.header {
+    height: 8vh;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-shadow: var(--box-shadow);
+    z-index: 10;
+    position: fixed;
+    width: 100%;
 }
 
 
-.header span{
-    font-size : 2.4rem;
-    font-weight : bold;
-    text-shadow : var(--text-shadow);
+.header span {
+    font-size: 2.4rem;
+    font-weight: bold;
+    text-shadow: var(--text-shadow);
 }
 
-.toggleButton{
+.toggleButton {
     width: 60px;
     height: 28px;
     border-radius: 20px;
@@ -28,7 +31,7 @@
     cursor: pointer;
 }
 
-.circle{
+.circle {
     width: 24px;
     height: 24px;
     background-color: #fff;
@@ -36,26 +39,27 @@
     transition: all 0.2s ease;
 }
 
-.iconMoon{
+.iconMoon {
     color: var(--toggleIcon-color);
     font-size: 2rem;
     margin-top: 6px;
     transition: all 0.2s ease;
+    margin-bottom: 10px;
 }
 
-.input:checked ~ .circle{
+.input:checked~.circle {
     transform: translateX(-28px);
     -webkit-transform: translateX(-28px);
     -ms-transform: translateX(-28px);
 
 }
 
-.input:checked ~ .iconMoon{
+.input:checked~.iconMoon {
     transform: translateX(28px);
     -webkit-transform: translateX(28px);
     -ms-transform: translateX(28px);
 }
 
-.input{
+.input {
     display: none;
 }

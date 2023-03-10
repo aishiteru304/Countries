@@ -9,10 +9,10 @@ function App() {
   const themeContext = useContext(ThemeContext)
   return (
     <AppContainer className={themeContext.theme}>
-        <Header/>
+      <Header />
       <ContentContainer>
-        <MainContent/>
-      </ContentContainer> 
+        <MainContent />
+      </ContentContainer>
     </AppContainer>
   );
 }
@@ -20,11 +20,12 @@ function App() {
 export default App;
 
 const AppContainer = styled.div`
-  height: 100vh;
   width: 100%;
   overflow: hidden;
 `
 const ContentContainer = styled.div`
-  max-width: 1200px;
+  max-width: 1220px;
   margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
 `

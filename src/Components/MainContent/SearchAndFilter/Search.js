@@ -1,12 +1,12 @@
-import {MdSearch} from 'react-icons/md'
+import { MdSearch } from 'react-icons/md'
 import styled from 'styled-components'
-function Search(){
-    return(
+function Search() {
+    return (
         <SearchPane>
             <h3>Search Country:</h3>
             <SearchElement>
                 <input type="text" placeholder='Input and enter to search...'></input>
-                <div style = {{height: '100%', width: '48px'}}><MdSearch className='iconSearch'/></div>
+                <div style={{ height: '100%', width: '48px' }}><MdSearch className='iconSearch' /></div>
             </SearchElement>
         </SearchPane>
     )
@@ -15,7 +15,7 @@ function Search(){
 export default Search
 
 const SearchPane = styled.div`
-    max-width: 320px;
+    max-width: 280px;
     width: 100%;
     margin-top: 20px;
 
