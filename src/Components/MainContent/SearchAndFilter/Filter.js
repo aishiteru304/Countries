@@ -1,7 +1,7 @@
 import {FaChevronDown, FaGlobeAfrica, FaGlobeAmericas, FaGlobeAsia, FaGlobeEurope} from 'react-icons/fa'
 import {GiWorld, GiEarthAsiaOceania} from 'react-icons/gi'
 import styled from 'styled-components'
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { ThemeContext } from '../../ThemeContext/themeContext'
 
 function Filter(){
