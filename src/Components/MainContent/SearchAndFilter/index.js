@@ -2,12 +2,12 @@ import Search from './Search'
 import Filter from './Filter'
 import styled from 'styled-components'
 
-function SearchAndFilter(){
-    return(
+function SearchAndFilter() {
+    return (
         <SearchAndFilterPane>
-            <Search/>
-            <Filter/>
-        </SearchAndFilterPane>   
+            <Search />
+            <Filter />
+        </SearchAndFilterPane>
     )
 }
 

@@ -34,7 +34,7 @@ function Filter() {
             <h3>Filter by regions:</h3>
             <SelectPane>
                 <Select className={themeContext.theme} onClick={handleSelect} ref={refSelect}>
-                    <span>{region}</span>
+                    <span id='region'>{region}</span>
                     <FaChevronDown />
                 </Select>
 
@@ -45,7 +45,7 @@ function Filter() {
                         <span>{regions[0]}</span>
                     </SelectItem>
 
-                    <SelectItem onClick={() => setRegion(regions[1])} >
+                    <SelectItem id='africa' onClick={() => { setRegion(regions[1]); console.log('A') }} >
                         <FaGlobeAfrica />
                         <span>{regions[1]}</span>
                     </SelectItem>

@@ -14,6 +14,4 @@ function MainContent() {
 export default MainContent
 
 const MainContentPane = styled.div`
-    margin-top: 8vh;
-    z-index: 5;
 `
