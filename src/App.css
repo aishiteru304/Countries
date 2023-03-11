@@ -31,3 +31,7 @@ ul {
 .displayNone {
   display: none;
 }
+
+a {
+  text-decoration: none;
+}

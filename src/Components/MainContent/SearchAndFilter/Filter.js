@@ -3,6 +3,7 @@ import { GiWorld, GiEarthAsiaOceania } from 'react-icons/gi'
 import styled from 'styled-components'
 import { useContext, useRef, useState, useEffect } from 'react'
 import { ThemeContext } from '../../ThemeContext/themeContext'
+import { Link } from 'react-router-dom'
 
 function Filter() {
     const themeContext = useContext(ThemeContext)
@@ -32,43 +33,54 @@ function Filter() {
     return (
         <FilterPane>
             <h3>Filter by regions:</h3>
-            <SelectPane>
+            <SelectPane id='selectPane'>
                 <Select className={themeContext.theme} onClick={handleSelect} ref={refSelect}>
-                    <span id='region'>{region}</span>
+                    <span >{region}</span>
                     <FaChevronDown />
                 </Select>
 
                 <SelectOption className={`${themeContext.theme} ${(isSelect ? '' : 'displayNone')} `}>
+                    <Link to='/all'>
+                        <SelectItem id='all' onClick={() => setRegion(regions[0])} >
+                            <GiWorld />
+                            <span>{regions[0]}</span>
+                        </SelectItem>
+                    </Link>
 
-                    <SelectItem onClick={() => setRegion(regions[0])} >
-                        <GiWorld />
-                        <span>{regions[0]}</span>
-                    </SelectItem>
+                    <Link to='/region/africa'>
+                        <SelectItem id='africa' onClick={() => setRegion(regions[1])} >
+                            <FaGlobeAfrica />
+                            <span>{regions[1]}</span>
+                        </SelectItem>
+                    </Link>
 
-                    <SelectItem id='africa' onClick={() => { setRegion(regions[1]); console.log('A') }} >
-                        <FaGlobeAfrica />
-                        <span>{regions[1]}</span>
-                    </SelectItem>
+                    <Link to='/region/americas'>
+                        <SelectItem id='americas' onClick={() => setRegion(regions[2])} >
+                            <FaGlobeAmericas />
+                            <span>{regions[2]}</span>
+                        </SelectItem>
+                    </Link>
 
-                    <SelectItem onClick={() => setRegion(regions[2])} >
-                        <FaGlobeAmericas />
-                        <span>{regions[2]}</span>
-                    </SelectItem>
+                    <Link to='/region/asia'>
+                        <SelectItem id='asia' onClick={() => setRegion(regions[3])} >
+                            <FaGlobeAsia />
+                            <span>{regions[3]}</span>
+                        </SelectItem>
+                    </Link>
 
-                    <SelectItem onClick={() => setRegion(regions[3])} >
-                        <FaGlobeAsia />
-                        <span>{regions[3]}</span>
-                    </SelectItem>
+                    <Link to='/region/europe'>
+                        <SelectItem id='europe' onClick={() => setRegion(regions[4])} >
+                            <FaGlobeEurope />
+                            <span>{regions[4]}</span>
+                        </SelectItem>
+                    </Link>
 
-                    <SelectItem onClick={() => setRegion(regions[4])} >
-                        <FaGlobeEurope />
-                        <span>{regions[4]}</span>
-                    </SelectItem>
-
-                    <SelectItem onClick={() => setRegion(regions[5])} >
-                        <GiEarthAsiaOceania />
-                        <span>{regions[5]}</span>
-                    </SelectItem>
+                    <Link to='/region/oceania'>
+                        <SelectItem id='oceania' onClick={() => setRegion(regions[5])} >
+                            <GiEarthAsiaOceania />
+                            <span>{regions[5]}</span>
+                        </SelectItem>
+                    </Link>
 
 
                 </SelectOption>
@@ -84,7 +96,7 @@ const FilterPane = styled.div`
     max-width: 160px;
     width: 100%;
     margin-top: 20px;
-    
+    padding-right: 20px;
     h3{
         font-size: 1.8rem;
         font-weight: 600px;
@@ -123,6 +135,11 @@ const SelectOption = styled.ul`
     position: absolute;
     overflow: hidden;
     z-index: 10;
+
+    a{
+        text-decoration: none;
+        color: #000;
+    }
 `
 
 const SelectItem = styled.li`

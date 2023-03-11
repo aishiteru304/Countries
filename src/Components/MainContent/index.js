@@ -14,4 +14,5 @@ function MainContent() {
 export default MainContent
 
 const MainContentPane = styled.div`
+    min-height: 100vh;
 `

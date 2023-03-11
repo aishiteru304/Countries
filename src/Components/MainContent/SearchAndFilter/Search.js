@@ -5,8 +5,8 @@ function Search() {
         <SearchPane>
             <h3>Search Country:</h3>
             <SearchElement>
-                <input type="text" placeholder='Input and enter to search...'></input>
-                <div style={{ height: '100%', width: '48px' }}><MdSearch className='iconSearch' /></div>
+                <input id='search' type="text" placeholder='Input and enter to search...'></input>
+                <div id='iSearch' style={{ height: '100%', width: '48px' }}><MdSearch className='iconSearch' /></div>
             </SearchElement>
         </SearchPane>
     )
@@ -18,7 +18,7 @@ const SearchPane = styled.div`
     max-width: 280px;
     width: 100%;
     margin-top: 20px;
-
+    padding-left: 20px;
     h3{
         font-size: 1.8rem;
         font-weight: 600;

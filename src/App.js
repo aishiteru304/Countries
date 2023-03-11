@@ -4,7 +4,7 @@ import MainContent from './Components/MainContent/index';
 import styled from 'styled-components';
 import { useContext } from 'react';
 import { ThemeContext } from './Components/ThemeContext/themeContext';
-
+import Footer from './Components/Footer';
 function App() {
   const themeContext = useContext(ThemeContext)
   return (
@@ -13,6 +13,7 @@ function App() {
       <ContentContainer>
         <MainContent />
       </ContentContainer>
+      <Footer />
     </AppContainer>
   );
 }
