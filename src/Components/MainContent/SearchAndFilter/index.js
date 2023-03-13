@@ -18,9 +18,9 @@ const SearchAndFilterPane = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 8vh;
-    z-index: 10;
+    // position: fixed;
+    // left: 0;
+    // right: 0;
+    // top: 8vh;
+    // z-index: 10;
 `

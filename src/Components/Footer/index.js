@@ -22,9 +22,9 @@ const FooterPane = styled.div`
     align-items: center;
     justify-content: center;
     box-shadow: var(--box-shadow);
-    margin-top: 100px;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    // margin-top: 100px;
+    // position: fixed;
+    // left: 0;
+    // right: 0;
+    // bottom: 0;
 `

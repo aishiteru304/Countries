@@ -1,0 +1,48 @@
+.countryInfor {
+    min-width: 400px;
+    padding-left: 20px;
+}
+
+.countryName {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1.8rem;
+}
+
+tr,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+.countryTitle {
+    font-weight: 600;
+    max-width: max-content;
+}
+
+.countryValue {
+    font-weight: 400;
+    width: 300px;
+}
+
+.borderList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.borderItem {
+    padding: 4px 8px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+}

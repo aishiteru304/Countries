@@ -2,6 +2,7 @@ import styled from "styled-components"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeContext } from "../../ThemeContext/themeContext";
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Countries() {
 
@@ -47,13 +48,16 @@ function Countries() {
 
         if (document.getElementById('iSearch') && document.getElementById('search'))
             document.getElementById('iSearch').addEventListener('click', () => {
-                setRou('name/'.concat(document.getElementById('search').value))
+                if (document.getElementById('search').value !== '') {
+                    setRou('name/'.concat(document.getElementById('search').value))
+                }
             })
 
 
     }, [])
 
     useEffect(() => {
+
         fetch('https://restcountries.com/v2/'.concat(Rou))
             .then(res => res.json())
             .then(countries => {
@@ -70,7 +74,7 @@ function Countries() {
                             <img alt="" src={country.flag}></img>
                         </Flag>
                         <CountryInfor className={themeContext.theme}>
-                            <h3>{country.name}</h3>
+                            <Link to={`/country/${country.name}`}><h3>{country.name}</h3></Link>
                             <CountryPop>Dân số:
                                 <span>{new Intl.NumberFormat().format(country.population)}</span>
                             </CountryPop>
@@ -97,7 +101,7 @@ function Countries() {
 export default Countries
 
 const CountriesContainer = styled.div`
-    padding-top: 170px;
+    padding-top: 20px;
 `
 
 const CountryItem = styled.div`
@@ -122,11 +126,16 @@ const Flag = styled.div`
 
 const CountryInfor = styled.div`
     box-shadow: 0 2px 0.5px 0.5px rgba(0, 0, 0, 0.2);
+    a{
+        text-decoration: none;
+        color: black;
+    }
     h3{
         padding: 10px;
         font-size: 1.6rem;
         font-weight: 500;
         margin-bottom: 0;
+        cursor: pointer;
     }
 `
 
