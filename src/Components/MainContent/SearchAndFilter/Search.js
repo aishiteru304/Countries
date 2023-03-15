@@ -1,12 +1,27 @@
 import { MdSearch } from 'react-icons/md'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { useState } from 'react'
+
 function Search() {
+
+    const [valueInput, setValueInput] = useState('')
+    const handleSearch = () => {
+        setValueInput('')
+    }
     return (
         <SearchPane>
             <h3>Search Country:</h3>
             <SearchElement>
-                <input id='search' type="text" placeholder='Input and enter to search...'></input>
-                <div id='iSearch' style={{ height: '100%', width: '48px' }}><MdSearch className='iconSearch' /></div>
+
+                <input
+                    onChange={e => setValueInput(e.target.value)}
+                    value={valueInput}
+                    type="text" placeholder='Input and enter to search...'>
+                </input>
+                <Link to={valueInput !== '' ? `/name/${valueInput}` : '/all'} >
+                    <div onClick={handleSearch} style={{ height: '100%', width: '48px' }}><MdSearch className='iconSearch' /></div>
+                </Link>
             </SearchElement>
         </SearchPane>
     )
@@ -39,9 +54,14 @@ const SearchElement = styled.div`
     overflow: hidden;
     box-shadow: var(--box-shadow);
 
+    a{
+        color: #ccc;
+        width: 38px;
+    }
+
     .iconSearch{
-        height: 100%;
-        width: 100%;
+        height: 80%;
+        width: 80%;
         padding: 2px;
         text-align: center;
         background: #aaa;

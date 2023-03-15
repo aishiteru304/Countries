@@ -3,23 +3,23 @@ import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { ThemeContext } from "../../ThemeContext/themeContext"
 import styles from "./countryInfor.module.scss"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 function CountryDetail() {
     const themeContext = useContext(ThemeContext)
+    const location = useLocation()
     const navigate = useNavigate()
-    const nameUrl = window.location.href
-    const nameCountry = nameUrl.slice(nameUrl.indexOf("country") + 8).toLowerCase()
 
     const [countries, setCountries] = useState([])
     useEffect(() => {
-        fetch('https://restcountries.com/v2/name/'.concat(nameCountry))
+
+        fetch('https://restcountries.com/v2/name/'.concat(location.pathname.slice(8)))
             .then(res => res.json())
             .then(countries => {
                 setCountries(countries)
             })
 
-    }, [nameCountry])
+    }, [location])
 
     const getLanguages = (country) => {
         let result = "";
@@ -80,8 +80,8 @@ function CountryDetail() {
                                         <td className={styles.borderList}>
                                             {country.borders &&
                                                 country.borders.map((countryBorder, i) => (
-                                                    <Link to={`/alpha/${countryBorder}`} key={i} >
-                                                        <div className={styles.borderItem}>{countryBorder}</div>
+                                                    <Link to={`/alpha/${countryBorder}`} key={i}>
+                                                        <div className={`${styles.borderItem} ${themeContext.theme}`}>{countryBorder}</div>
                                                     </Link>
                                                 ))
                                             }

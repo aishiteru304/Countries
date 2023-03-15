@@ -1,25 +1,27 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import styles from "./countryInfor.module.scss"
 import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
+import { ThemeContext } from "../../ThemeContext/themeContext"
 import styled from "styled-components"
 
 function CountryCode() {
+    const themeContext = useContext(ThemeContext)
+
+    const location = useLocation()
     const navigate = useNavigate()
 
-    const nameUrl = window.location.href
-    const nameCountry = nameUrl.slice(nameUrl.indexOf("alpha") + 6).toLowerCase()
 
     const [countryCode, setCountryCode] = useState([])
 
     useEffect(() => {
-        fetch('https://restcountries.com/v2/alpha/'.concat(nameCountry))
+        fetch('https://restcountries.com/v2'.concat(location.pathname))
             .then(res => res.json())
             .then(countryCode => {
                 setCountryCode(countryCode)
             })
 
-    }, [nameCountry])
+    }, [location])
 
 
     const getLanguages = (country) => {
@@ -81,7 +83,7 @@ function CountryCode() {
                                     {countryCode.borders &&
                                         countryCode.borders.map((countryBorder, i) => (
                                             <Link to={`/alpha/${countryBorder}`} key={i} >
-                                                <div className={styles.borderItem}>{countryBorder}</div>
+                                                <div className={`${styles.borderItem} ${themeContext.theme}`}>{countryBorder}</div>
                                             </Link>
                                         ))
                                     }

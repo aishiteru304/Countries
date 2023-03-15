@@ -1,13 +1,15 @@
 import './App.css';
 import Header from './Components/Header'
-import MainContent from './Components/MainContent/index';
 import styled from 'styled-components';
 import { useContext } from 'react';
 import { ThemeContext } from './Components/ThemeContext/themeContext';
 import Footer from './Components/Footer';
 import { Routes, Route } from 'react-router-dom'
+import MainContent from './Components/MainContent/index';
+// import CountriesRegion from './Components/CountriesRegion/CountriesRegion';
 import CountryDetail from "../src/Components/MainContent/CountryDetail/index"
 import CountryCode from "../src/Components/MainContent/CountryDetail/CountryCode"
+
 
 
 
@@ -22,6 +24,7 @@ function App() {
           <Route exact path='/' element={<MainContent />} />
           <Route exact path='/all' element={<MainContent />} />
           <Route path='/region/:regionName' element={<MainContent />} />
+          <Route path='/name/:countryName' element={<MainContent />} />
           <Route path='/country/:countryName' element={<CountryDetail />} />
           <Route path='/alpha/:code' element={<CountryCode />} />
 

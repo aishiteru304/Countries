@@ -2,6 +2,7 @@ import SearchAndFilter from "./SearchAndFilter/index"
 import Countries from "./Countries/Countries"
 import styled from "styled-components"
 
+
 function MainContent() {
     return (
         <MainContentPane >
